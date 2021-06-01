@@ -1,3 +1,13 @@
+$fn = 64;
+
+or = 4;
+ir = 1;
+a = 20;
+h1 = 17;
+h2 = 3;
+
+connecter(or, ir, a, h1, h2);
+
 // the connector that connects between the laptop part & monitor part
 // or: outer radius of the connector
 // ir: inner radius of the connector
@@ -23,12 +33,3 @@ module connecter(or, ir, a, h1, h2) {
         cylinder(h=(h1+h2)*2, r=ir, center=true);
     }
 }
-
-$fn = 64;
-or = 3;
-ir = 1;
-a = 20;
-h1 = 17;
-h2 = 3;
-
-connecter(or, ir, a, h1, h2);
