@@ -17,9 +17,10 @@ tt = 6;
 th = 40;
 
 union () {
-bottom(mw, bt, bh, ro, ho, vo);
-top(mw, t, bt, tt, th);
+    bottom(mw, bt, bh, ro, ho, vo);
+    top(mw, t, bt, tt, th);
 }
+
 // the bottom part that connects to monitor through
 // w: the width of the bottom body
 // t: the thickness of the bottom body
@@ -28,7 +29,7 @@ top(mw, t, bt, tt, th);
 // ho: the horizontal separation between two holes
 // vo: the vertical separation from the top edge of the bottom body
 module bottom (w, t, h, ro, ho, vo) {
-    translate([0, 0, -h/2])
+    translate([0, t/2, -h/2])
     difference() {
         cube([w, t, h], center=true);
         
