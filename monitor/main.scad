@@ -1,5 +1,7 @@
 use <../connector.scad>
 
+// 122 
+
 $fn = 64;
 
 l = 324;        // the width of the monitor, copy from websites
@@ -18,7 +20,20 @@ th = 40;
 
 union () {
     bottom(mw, bt, bh, ro, ho, vo);
-    top(mw, t, bt, tt, th);
+    top(l, mw, t, bt, tt, th);
+}
+
+// the arm (including connector)
+// w: the width of the monitor
+// t: the thickness of the arm,
+// h1: the height of the horizontal arm
+// h2: the height of the vertical arm
+// ca: the angle of the connector
+// cir: the inner radius of the connector
+// ch1: the h1 of the connector
+// ch2: the h2 of the connector
+module arm (w, t, h1, h2, ca, cir, ch1, ch2) {
+
 }
 
 // the bottom part that connects to monitor through
@@ -51,23 +66,26 @@ module bottom (w, t, h, ro, ho, vo) {
 // bt: the thickness of the bottom body
 // tt: the thickness of the top body
 // h: the height of the top body
-module top(w, t, bt, tt, h) {
+module top(w, mw, t, bt, tt, h) {
     x = t + bt - tt;
+    p = mw/2;
+    q = -w/2;
+
     points = [
-        [w/2, 0, 0],        // 0
-        [w/2, bt, 0],
-        [w/2, bt+t, t],
-        [w/2, 0, tt],
-        [w/2, x, tt+x],
-        [w/2, x, h],
-        [w/2, x+tt, h],
-        [-w/2, 0, 0],       // 7
-        [-w/2, bt, 0],
-        [-w/2, bt+t, t],
-        [-w/2, 0, tt],
-        [-w/2, x, tt+x],
-        [-w/2, x, h],
-        [-w/2, x+tt, h]
+        [p, 0, 0],          // 0
+        [p, bt, 0],
+        [p, bt+t, t],
+        [p, 0, tt],
+        [p, x, tt+x],
+        [p, x, h],
+        [p, x+tt, h],
+        [q, 0, 0],          // 7
+        [q, bt, 0],
+        [q, bt+t, t],
+        [q, 0, tt],
+        [q, x, tt+x],
+        [q, x, h],
+        [q, x+tt, h]
     ];
 
     faces = [
@@ -84,7 +102,12 @@ module top(w, t, bt, tt, h) {
         [9, 13, 12, 11]
     ];
 
-    polyhedron(points=points, faces=faces);
+    difference () {
+        polyhedron(points=points, faces=faces);
+    
+        translate([-w/2-2, -2, 0])
+        cube([(w-mw)/2+2, x+2, h*2], center=false);
+    }
 }
 
 // // the arm part that connects to the laptop using catcher
