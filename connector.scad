@@ -6,7 +6,7 @@ a = 20;
 h1 = 17;
 h2 = 3;
 
-connecter(or, ir, a, h1, h2);
+connector(or, ir, a, h1, h2);
 
 // the connector that connects between the laptop part & monitor part
 // or: outer radius of the connector
@@ -14,7 +14,7 @@ connecter(or, ir, a, h1, h2);
 // a: the angle of the connector
 // h1: the up-side of the connector
 // h2: the lower-side (connecting side) of the connector
-module connecter(or, ir, a, h1, h2) {
+module connector(or, ir, a, h1, h2) {
     difference() {
         union() {
             translate([or/2, 0, h1/2])
