@@ -15,25 +15,41 @@ mw = ho + 20;   // the width of the main body
 bt = 2;         // the thickness of the bottom body
 bh = 20;        // the height of the bottom body
 
-tt = 6;
-th = 40;
+tt = 6;         // the thickness of the top body
+th = 40;        // the height of the top body
 
-union () {
-    bottom(mw, bt, bh, ro, ho, vo);
-    top(l, mw, t, bt, tt, th);
-}
+aw = 20;
+ah = 122 - th;
+
+ca = 20;
+cir = 1;
+ch1 = 17;
+ch2 = 6;
+
+delta = 5;
+// union () {
+//     bottom(mw, bt, bh, ro, ho, vo);
+//     top(l, mw, t, bt, tt, th);
+// }
+
+arm(l, aw, t, ah, ca, cir, ch1, ch2, delta);
 
 // the arm (including connector)
 // w: the width of the monitor
-// t: the thickness of the arm,
-// h1: the height of the horizontal arm
-// h2: the height of the vertical arm
+// t: the thickness of the arm
+// h: the height of the vertical arm
 // ca: the angle of the connector
 // cir: the inner radius of the connector
 // ch1: the h1 of the connector
 // ch2: the h2 of the connector
-module arm (w, t, h1, h2, ca, cir, ch1, ch2) {
-
+module arm (w, aw, t, h, ca, cir, ch1, ch2, delta) {
+    union () {
+        translate([(delta+t)/2, 0, ch1/2])
+        cube([delta, t, ch1], center=true);
+        
+        connector(t/2, cir, ca, ch1, ch2);
+    }
+    
 }
 
 // the bottom part that connects to monitor through
