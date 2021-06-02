@@ -1,4 +1,4 @@
-outer = 40;
+outer = 30;
 inner = 20;
 
 connector(outer, inner);

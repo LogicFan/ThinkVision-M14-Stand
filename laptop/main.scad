@@ -59,21 +59,23 @@ module body1() {
 
 module arm() {
     t = 5 - delta;
-    or = 40;
+    or = 30;
     ir = 20 + delta;
 
-    translate([-(or+2), -t, or])
+    translate([-(or+2), -t, 80-or])
     union() {
         difference() {
-            cube([or, t, or], center=false);
+            translate([-10, 0, 0])
+            cube([or+10, t, or], center=false);
             
             translate([(or-ir)/2, -1, (or-ir)/2-2])
             cube([ir, t+2, 100], center=false);
         }
     
-        translate([or, -9+t, -or])
+        translate([or, -9+t, -(80-or)])
         cube([2, 9, 80], center=false);
         
+        translate([-10, 0, 0])
         translate([40, 0, 0])
         mirror([1, 0, 0])
         rotate([270, 0, 0])
