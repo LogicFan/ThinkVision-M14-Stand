@@ -19,4 +19,11 @@ module sector(h, r, a1, a2) {
                 cube([d, d/2, h+1]);
         }
     }
-}    
+}
+
+module arc(h, r1, r2, a1, a2) {
+    difference() {
+        sector(h, r1, a1, a2);
+        sector(h, r2, a1, a2);
+    }
+}
