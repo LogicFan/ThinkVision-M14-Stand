@@ -24,6 +24,8 @@ module sector(h, r, a1, a2) {
 module arc(h, r1, r2, a1, a2) {
     difference() {
         sector(h, r1, a1, a2);
-        sector(h, r2, a1, a2);
+        
+        translate([0, 0, -1])
+        cylinder(h+2, r2, r2, center=false);
     }
 }
