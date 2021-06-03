@@ -37,9 +37,19 @@ module body1() {
 
     translate([0, -3, 0])
     union() {
-        translate([9, 0, 0])
-        arc(h, 9, 7, 180, 250);
-        
+        difference() {
+            union() {
+                translate([9, 0, 0])
+                arc(h, 9, 7, 180, 250);
+                
+                translate([9, 0, 78])
+                sector(2, 9, 180, 250);
+            }
+            
+            translate([5, -9, -1])
+            cube([4, 1, h+2], center=false);
+        }
+            
         translate([0, 0, 40])
         cube([w, 3, 40], center=false);
         
@@ -52,8 +62,8 @@ module body1() {
         translate([6, -8, 78])
         cube([34, 10, 2], center=false);
         
-        translate([9, 0, 78])
-        sector(2, 9, 180, 250);
+        translate([36, -8, 77])
+        cube([4, 1.4, 3], center=false);
     }
 }
 
@@ -82,4 +92,3 @@ module arm() {
         triangle(40, 20, t);
     }
 }
-
