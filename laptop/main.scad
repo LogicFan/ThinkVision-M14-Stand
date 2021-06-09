@@ -46,7 +46,7 @@ module body1() {
                 sector(2, 9, 180, 250);
             }
             
-            translate([5, -9, -1])
+            translate([3, -9, -1])
             cube([4, 1, h+2], center=false);
         }
             
@@ -68,11 +68,11 @@ module body1() {
 }
 
 module arm() {
-    t = 5 - delta;
+    t = 5 - 2 * delta;
     or = 30;
     ir = 20 + delta;
 
-    translate([-(or+2), -t, 80-or])
+    translate([-(or+3), -t, 80-or])
     union() {
         difference() {
             translate([-10, 0, 0])
@@ -83,7 +83,10 @@ module arm() {
         }
     
         translate([or, -9+t, -(80-or)])
-        cube([2, 9, 80], center=false);
+        cube([2, 6, 80], center=false);
+
+        translate([or, -3+t, -(80-or)])
+        cube([3, 3, 80], center=false);
         
         translate([-10, 0, 0])
         translate([40, 0, 0])
