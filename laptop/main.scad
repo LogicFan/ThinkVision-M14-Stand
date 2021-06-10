@@ -68,7 +68,7 @@ module body1() {
 }
 
 module arm() {
-    t = 5 - 2 * delta;
+    t = 4 - 2 * delta;
     or = 30;
     ir = 20 + delta;
 
